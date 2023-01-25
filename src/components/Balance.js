@@ -1,7 +1,6 @@
 import React from "react";
 
 function Balance({ transactionList }) {
-  /* CÁCH 1 (Thắng): Tính balance, income, expense */
   let income = 0;
   let expense = 0;
   for (let transaction of transactionList) {
@@ -11,8 +10,7 @@ function Balance({ transactionList }) {
       expense = +transaction.amount + expense;
     }
   }
-  /* CÁCH 2 (Huy): Tính balance, income, expense */
-  // Lọc object có tiền (+)
+
   const incomeTotal = () => {
     const income = transactionList.filter((trans) => {
       return trans.amount > 0;
@@ -23,7 +21,6 @@ function Balance({ transactionList }) {
     }
     return sum;
   };
-  // Lọc object có tiền (-)
   const expenseTotal = () => {
     const expense = transactionList.filter((trans) => {
       return trans.amount < 0;
@@ -34,9 +31,7 @@ function Balance({ transactionList }) {
     }
     return sum;
   };
-  // Tính Balance = INCOME - EXPENSE
   const balanceTotal = () => {
-    // return incomeTotal() - expenseTotal();
     return incomeTotal() + expenseTotal();
   };
   return (
