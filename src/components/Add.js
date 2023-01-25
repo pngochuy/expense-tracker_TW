@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
-// { functionOnChange, functionAddItem, iref, ivalue }
 
 function Add({ setTransactionList, transactionList }) {
-  //              state              function
   const [newTransaction, setNewTransaction] = useState({
     text: "",
     amount: "",
@@ -11,19 +9,12 @@ function Add({ setTransactionList, transactionList }) {
   const inputRefAmount = useRef();
 
   const handleOnChangeText = (e) => {
-    // setInputValueText(e.target.value);
-    // console.log(e.target.value);
-    // setInputValue(e.target.value);
-    // if (typeof(e.target.value) === typeof(Number)) {}
     setNewTransaction({
       ...newTransaction,
       text: e.target.value,
     });
   };
   const handleOnChangeAmount = (e) => {
-    // setInputValueAmount(e.target.value);
-    // console.log(e.target.value);
-    // setInputValue(e.target.value);
     setNewTransaction({
       ...newTransaction,
       amount: e.target.value,
@@ -33,7 +24,6 @@ function Add({ setTransactionList, transactionList }) {
   const handleAddTrans = () => {
     if (newTransaction.text !== "" && newTransaction.amount !== "") {
       setTransactionList(newTransaction);
-      // console.log(newTransaction);
 
       setNewTransaction({
         ...newTransaction,
@@ -66,12 +56,6 @@ function Add({ setTransactionList, transactionList }) {
             onChange={(e) => {
               handleOnChangeText(e);
             }}
-            // onChange={(e) => {
-            //   setNewTransaction({
-            //     ...newTransaction,
-            //     text: e.target.value,
-            //   });
-            // }}
             ref={inputRefText}
             value={newTransaction.text}
             onKeyDown={(e) => handlePressEnter(e)}
@@ -87,12 +71,6 @@ function Add({ setTransactionList, transactionList }) {
             onChange={(e) => {
               handleOnChangeAmount(e);
             }}
-            // onChange={(e) => {
-            //   setNewTransaction({
-            //     ...newTransaction,
-            //     amount: e.target.value,
-            //   });
-            // }}
             ref={inputRefAmount}
             value={newTransaction.amount}
             onKeyDown={(e) => handlePressEnter(e)}
@@ -101,10 +79,7 @@ function Add({ setTransactionList, transactionList }) {
       </div>
       <button
         className="bg-black text-white text-center w-full py-2 mt-4"
-        // onClick={handleAddItem}
-        // onClick={() => transactionList(newTransaction)}
         onClick={() => handleAddTrans()}
-        // Khi t click thì nó gọi props rồi nhận
       >
         Add transaction
       </button>
